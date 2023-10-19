@@ -1,0 +1,92 @@
+git pull 에러 발생
+처음 오류 내용은 
+here is no tracking information for the current branch. please specify which branch you want to merge with. see git-pull(1) for details. git pull <remote> <branch> if you wish to set tracking information for this branch you can do so with: git branch --set-upstream-to=origin/<branch> master
+
+결국 해결은 못했고
+프로젝트 파일 삭제한 후 아래와 같이 재설치 및 pull 진행
+팀 깃허브와 연결확인 완료
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ git branch
+* master
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ git fetch origin
+git checkout feat-profile
+error: pathspec 'feat-profile' did not match any file(s) known to git
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ git add .
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ git commit -m "연결확인용"
+[master d4a17a4] 연결확인용
+ 1 file changed, 1 insertion(+)
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ git branch
+* master
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ git fetch origin
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ git checkout feat-login-profile
+Switched to a new branch 'feat-login-profile'
+branch 'feat-login-profile' set up to track 'origin/feat-login-profile'.
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git branch
+* feat-login-profile
+  master
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git add .
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git commit -m "연결확인중"
+[feat-login-profile 242a791] 연결확인중
+ 1 file changed, 1 insertion(+)
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 401 bytes | 25.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/FRONTENDSCHOOL7/final-07-gymnect.git
+   53eee03..242a791  feat-login-profile -> feat-login-profile
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+ 1 file changed, 1 deletion(-)
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 363 bytes | 30.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/FRONTENDSCHOOL7/final-07-gymnect.git
+   242a791..1936cc6  feat-login-profile -> feat-login-profile
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git branch master
+fatal: a branch named 'master' already exists
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git branch
+* feat-login-profile
+  master
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (feat-login-profile)
+$ git checkout master
+Switched to branch 'master'
+
+Samsung@DESKTOP-4QCABL6 MINGW64 ~/Desktop/gymconnet (master)
+$ npm install
