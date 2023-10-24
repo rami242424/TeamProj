@@ -1,0 +1,12 @@
+import React from 'react'
+import ProfileEditNav from '../../components/Header/ProfileEditHeader'
+
+export default function ProfileEdit() {
+  return (
+    <>
+      <ProfileEditNav />
+      안녕하세요
+   
+    </>
+  )
+}
