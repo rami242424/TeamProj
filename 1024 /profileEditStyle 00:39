@@ -1,0 +1,31 @@
+// import styled, { css } from "styled-components";
+import styled from "styled-components";
+import AddImg from '../../assets/images/icon-img-btn.svg';
+
+
+export const ImageSection = styled.section`
+`;
+
+export const Label = styled.label`
+  display: block;
+  position: relative;
+  width: 11rem;
+  height: 11rem;
+  margin: 3.5rem auto 5.5rem;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #D9D9D9;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 3.6em;
+    height: 3.6rem;
+    background: url(${AddImg}) no-repeat center / 3.6rem 3.6rem;
+    z-index: 2;
+    }
+`
