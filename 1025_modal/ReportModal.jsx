@@ -10,8 +10,7 @@ export default function Modal() {
         <Background />
         <Section>
             <Container>
-              <Button>설정 및 개인정보</Button>
-              <Button>로그아웃</Button>
+              <Button>유저 신고하기</Button>
             </Container>
         </Section>
     </>
