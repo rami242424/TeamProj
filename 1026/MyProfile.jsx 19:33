@@ -1,0 +1,41 @@
+기본으로 보면 될듯
+
+import React, { useState } from "react";
+import Post from "../../components/common/Post/Post";
+import MyProfileUp from "../../components/common/Profile/MyProfileUp";
+import ModalNav from "../../components/Header/ModalHeader";
+import {
+  FlexIconImg, GridIconImg, MainWrap, Wrap, PostContainer
+} from "./MyProfileStyle";
+import flexIcon from "../../assets/images/icon-flex-on.svg";
+import gridIcon from "../../assets/images/icon-grid-off.svg";
+
+export default function MyProfile() {
+  const [isGrid, setIsGrid] = useState(false);
+
+  const handleGridIconClick = () => {
+    setIsGrid(true);
+  };
+
+  const handleFlexIconClick = () => {
+    setIsGrid(false);
+  };
+
+  return (
+    <>
+      <ModalNav/>
+      <MyProfileUp/>
+      <MainWrap>
+        <Wrap>
+          <FlexIconImg src={flexIcon} alt="List View" onClick={handleFlexIconClick} />
+          <GridIconImg src={gridIcon} alt="Grid View" onClick={handleGridIconClick} />
+        </Wrap>
+        <PostContainer isGrid={isGrid}>
+          {/* Here you can map over your data and render each post */}
+          <Post isGrid={isGrid} />
+          {/* ... */}
+        </PostContainer>
+      </MainWrap>
+    </>
+  );
+}
