@@ -1,0 +1,75 @@
+FlexIconImg 위치만 조금 조정하면됨
+
+import styled, { css } from "styled-components";
+
+export const MainWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; 
+  padding-top: 60px; //12:03
+`;
+
+export const Wrap = styled.div`
+  /* margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  1151*/
+  margin: 20px;
+  display: flex;
+  justify-content: flex-end; // Aligns items to the end
+  position: absolute; // Positions the container
+  top: 16px;
+  right: 16px;
+  top: 0; /* Adjust the top position to be at the very top 12;03*/
+  z-index: 10; /* Add z-index to ensure it's above other elements 12;03*/
+`;
+
+export const FlexIconImg = styled.img`
+  /* cursor: pointer; 
+  11:52*/
+  width: 26px;
+  cursor: pointer;
+  margin-left: 16px; // To ensure there's a gap between icons
+  ${({ active }) => active && css`
+    filter: none;  // You might want to adjust this for your filled icon effect
+  `}
+`;
+
+// export const GridIconImg = styled.img`
+//   cursor: pointer;
+// `; 11:52
+export const GridIconImg = styled(FlexIconImg)``;
+
+export const PostContainer = styled.div`
+  display: ${props => (props.isGrid ? "grid" : "flex")};
+  grid-template-columns: ${props => (props.isGrid ? "repeat(3, 1fr)" : "none")};
+  gap: 20px;
+  width: 100%;
+`;
+
+export const Post = styled.div`
+  height: 200px;
+  width: 100%;
+  background: lightgray;
+  margin-bottom: ${props => (props.isGrid ? "0px" : "20px")};
+`;
+
+
+
+
+export const GridContainer = styled.div`
+  display: grid;
+  gap: 10px; // Space between grid items
+  grid-template-columns: repeat(3, 114px); // 3 items with a fixed width of 114px per row 
+
+  /* Child grid items styling */
+  & > div {
+    width: 114px;  // Fixed width for each grid item
+    height: 114px;  // Fixed height for each grid item
+    background-color: #e0e0e0;  // Placeholder color
+    /* Additional styling for each grid item if needed */
+  }
+
+
+`;
