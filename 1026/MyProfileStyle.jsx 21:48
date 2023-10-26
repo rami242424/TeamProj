@@ -1,0 +1,78 @@
+import styled, { css } from "styled-components";
+
+export const MainWrap = styled.div`
+  position: relative; /* 이거추가함ㅋㅋㅋㅋ*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Wrap = styled.div`
+  /* 이거 전체 일단 주석 
+  margin: 20px;
+  display: flex;
+  justify-content: flex-end; // Aligns items to the end
+  position: absolute; // Positions the container
+  top: 16px;
+  right: 16px; */
+
+  position: absolute; /* Change from margin to absolute positioning */
+  top: 16px;  /* Space from the top */
+  right: 16px; /* Space from the right */
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;  /* Gap between the two icons */
+`;
+
+export const FlexIconImg = styled.img`
+  /* width: 26px;
+  /* opacity: ${props => props.opacity || 1};
+  transition: opacity 0.3s ease;
+  cursor: pointer; 
+  요고 */
+  width: 26px;
+  cursor: pointer;
+  margin-left: 16px; // To ensure there's a gap between icons
+  ${({ active }) => active && css`
+    filter: none;  // You might want to adjust this for your filled icon effect
+  `}
+
+
+  
+`;
+
+
+
+export const GridIconImg = styled(FlexIconImg)``;
+
+export const PostContainer = styled.div`
+  display: ${props => (props.isGrid ? "grid" : "flex")};
+  grid-template-columns: ${props => (props.isGrid ? "repeat(3, 1fr)" : "none")};
+  gap: 20px;
+  width: 100%;
+`;
+
+export const Post = styled.div`
+  height: 200px;
+  width: 100%;
+  background: lightgray;
+  margin-bottom: ${props => (props.isGrid ? "0px" : "20px")};
+`;
+
+export const GridContainer = styled.div`
+  display: grid;
+  gap: 8px; // Space between grid items
+  /* grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(${props => props.isExpanded ? 1 : 3}, 114px);  */
+   grid-template-columns: repeat(3, 114px);
+  /* For expanded view, only 1 item per row, otherwise 3 items per row */
+
+  /* Child grid items styling */
+  & > div {
+    /* width: calc((100% - 20px) / 3); // Width adjusted for 3 items in one row, accounting for gaps */
+    width: 114px; 
+    height: 114px;
+    background-color: #e0e0e0;  // Placeholder color
+    /* Additional styling for each grid item if needed */
+  }
+`;
