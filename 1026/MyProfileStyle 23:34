@@ -1,0 +1,54 @@
+import styled, { css } from "styled-components";
+
+export const MainWrap = styled.div`
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Wrap = styled.div`
+  position: absolute;
+  top: 16px; 
+  right: 16px; 
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;  
+`;
+
+export const FlexIconImg = styled.img`
+  width: 26px;
+  cursor: pointer;
+  margin-left: 16px;
+  ${({ active }) => active && css`
+    filter: none;
+  `}
+`;
+
+export const GridIconImg = styled(FlexIconImg)``;
+
+export const PostContainer = styled.div`
+  display: ${props => (props.isGrid ? "grid" : "flex")};
+  grid-template-columns: ${props => (props.isGrid ? "repeat(3, 1fr)" : "none")};
+  gap: 20px;
+  width: 100%;
+`;
+
+export const Post = styled.div`
+  height: 200px;
+  width: 100%;
+  background: lightgray;
+  margin-bottom: ${props => (props.isGrid ? "0px" : "20px")};
+`;
+
+export const GridContainer = styled.div`
+  display: grid;
+  gap: 8px; 
+  grid-template-columns: repeat(3, 114px);
+
+  & > div {
+    width: 114px; 
+    height: 114px;
+    background-color: #e0e0e0;
+  }
+`;
