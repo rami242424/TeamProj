@@ -1,0 +1,54 @@
+import React, { useState } from "react";
+import Post from "../../components/common/Post/Post";
+import MyProfileUp from "../../components/common/Profile/MyProfileUp";
+import ModalNav from "../../components/Header/ModalHeader";
+import {
+  FlexIconImg, GridIconImg, MainWrap, Wrap, GridContainer
+} from "./MyProfileStyle";
+import flexIcon from "../../assets/images/icon-flex-on.svg";
+import gridIcon from "../../assets/images/icon-grid-off.svg";
+
+export default function MyProfile() {
+  const [isExpandedView, setIsExpandedView] = useState(false);
+
+  const handleIconClick = () => {
+    setIsExpandedView(!isExpandedView);
+  };
+
+  return (
+    <>
+      <ModalNav />
+      <MyProfileUp />
+      <MainWrap>
+        <Wrap>
+          <FlexIconImg 
+              src={flexIcon} 
+              alt="나열방식" 
+              onClick={() => handleIconClick(false)} 
+              opacity={isExpandedView ? 0.5 : 1}
+            />
+            <GridIconImg 
+              src={gridIcon} 
+              alt="그리드방식" 
+              onClick={() => handleIconClick(true)} 
+              opacity={!isExpandedView ? 0.5 : 1}
+            />
+        </Wrap>
+        {/* Display content based on isExpandedView state */}
+        {isExpandedView ? (
+          <GridContainer isExpanded={true}>
+            {/* Sample grid items. You can replace with your actual content */}
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </GridContainer>
+        ) : (
+          <Post />
+        )}
+      </MainWrap>
+    </>
+  );
+}
