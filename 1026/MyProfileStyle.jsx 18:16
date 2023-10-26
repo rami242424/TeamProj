@@ -1,0 +1,81 @@
+import styled, { css } from "styled-components";
+
+export const MainWrap = styled.main`
+  padding: 0 16px;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin: 9px 0 25px 0;
+`;
+
+// export const FlexIconImg = styled.img`
+//   width: 26px;
+//   opacity: ${props => props.opacity || 1};
+//   transition: opacity 0.3s ease;
+//   cursor: pointer;
+// `;
+
+// export const GridIconImg = styled.img`
+//   width: 26px;
+//   opacity: ${props => props.opacity || 1};
+//   transition: opacity 0.3s ease;
+//   cursor: pointer;
+// `;
+
+// 그리드 형식
+
+export const Icon = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  /* Additional styling if needed */
+`;
+
+// export const GridContainer = styled.div`
+//   display: grid;
+//   gap: 10px; // Space between grid items
+//   grid-template-columns: repeat(3, 1fr); // 3 items per row 
+
+//   /* Child grid items styling */
+//   & > div {
+//     width: calc((100% - 20px) / 3); // Width adjusted for 3 items in one row, accounting for gaps
+//     height: 114px;
+//     background-color: #e0e0e0;  // Placeholder color
+//     /* Additional styling for each grid item if needed */
+//   }
+// `;
+export const GridContainer = styled.div`
+  display: grid;
+  gap: 10px; // Space between grid items
+  grid-template-columns: repeat(3, 114px); // 3 items with a fixed width of 114px per row 
+
+  /* Child grid items styling */
+  & > div {
+    width: 114px;  // Fixed width for each grid item
+    height: 114px;  // Fixed height for each grid item
+    background-color: #e0e0e0;  // Placeholder color
+    /* Additional styling for each grid item if needed */
+  }
+`;
+
+export const FlexIconImg = styled.img`
+  width: 26px;
+  ${({ active }) => active && css`
+    filter: grayscale(0%);  // Adjust this to match your desired active color effect
+  `}
+`;
+
+export const GridIconImg = styled.img`
+  width: 26px;
+  ${({ active }) => active && css`
+    filter: grayscale(0%);  // Adjust this to match your desired active color effect
+  `}
+`;
+
