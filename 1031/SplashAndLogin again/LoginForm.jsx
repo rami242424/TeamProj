@@ -20,7 +20,7 @@ import {
   ErrorMessage,
   LoginSection,
   SnsButton
-} from "./LoginStyle";
+} from "./LoginFormStyle";
 
 export default function Login() {
   const navigate = useNavigate();
