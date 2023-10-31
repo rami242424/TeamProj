@@ -1,0 +1,48 @@
+import React, { useEffect, useState } from "react";
+import BackNav from "../../components/Header/BackspaceHeader";
+import FollowerProfile from "../../components/common/ProfileList";
+import FollowButton from "../../components/common/Button/FollowButton";
+import styled from "styled-components";
+import FollowerListAPI from './FollowerListAPI/FollowerListAPI';
+
+export default function FollowingPage() {
+  const [followers, setFollowers] = useState([]); // to store the list of followers
+  const { fetchFollower } = FollowerListAPI('accountName'); // replace 'accountNameHere' with the account name you want to fetch the followers for
+  
+  useEffect(() => {
+    async function fetchFollowers() {
+      const data = await fetchFollower();
+      setFollowers(data);
+    }
+    
+    fetchFollowers();
+  }, [fetchFollower]);
+
+  return (
+    <Container>
+      <BackNav />
+      {followers.map((follower, index) => (
+        <ListContainer key={index}>
+          <FollowerProfile follower={follower} /> 
+          {/* Please make sure the FollowerProfile component can accept and display a 'follower' prop */}
+          <FollowButton />
+        </ListContainer>
+      ))}
+    </Container>
+  );
+}
+
+const Container = styled.div`
+  width: 390px;
+  height: calc(100vh - 108px);
+  display: flex;
+  flex-direction: column;
+`;
+
+const ListContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin: 16px;
+`;
