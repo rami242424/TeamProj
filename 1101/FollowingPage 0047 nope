@@ -1,0 +1,157 @@
+import React, { useState, useEffect }  from "react";
+import { userInfoAtom } from "../../atoms/UserAtom"; 
+import { getFollowingList } from "../../api/follow"; 
+import { useRecoilValue } from "recoil";
+import { Link } from "react-router-dom";
+import { deleteFollow , postFollow } from '../../api/follow';
+
+import BackNav from "../../components/Header/BackspaceHeader";
+import FollowerProfile from "../../components/common/ProfileList";
+import FollowButton from "../../components/common/Button/FollowButton";
+import styled from "styled-components";
+
+export default function FollowingPage() {
+  const userInfo = useRecoilValue(userInfoAtom);
+  const [followings, setfollowings] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getFollowingList(userInfo.account)
+      .then(data => {
+        if (Array.isArray(data)) {
+          const updatedData = data.map(user => {
+            // Use actual backend property if available, else default to true since it's the following list
+            return { ...user, isFollowing: user.isFollowing ? user.isFollowing : true };
+          });
+          setfollowings(updatedData);
+          console.log("followings Data:", updatedData);
+        } else {
+          console.error("Received data is not an array:", data);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching followings:", err);
+        setLoading(false);
+      });
+  }, [userInfo.account]);
+
+
+
+  // useEffect(() => {
+  //   getFollowingList(userInfo.account)
+  //     .then(data => {
+  //       if (Array.isArray(data)) { 
+  //         const updatedData = data.map(user => ({ ...user, isFollowing: false })); // adjust as needed
+  //         setfollowings(updatedData);
+  //         console.log("followings Data:", updatedData);
+
+
+  //       } else {
+  //         console.error("Received data is not an array:", data);
+  //       }
+  //       setLoading(false);
+  //     })
+  //     .catch(err => {
+  //       console.error("Error fetching followings:", err);
+  //       setLoading(false);
+  //     });
+  // }, [userInfo.account]);
+
+  if (loading) return <div>Loading...</div>;
+
+  // 팔로우 및 취소 동작
+  const handleFollow = async (followingId, isCurrentlyFollowing) => {
+  //   if (isCurrentlyFollowing) {
+  //     console.log(`Unfollowing user with ID: ${followingId}`);
+  //   } else {
+  //     console.log(`Following user with ID: ${followingId}`);
+  //   }
+  // };
+      try {
+        setfollowings(prevFollowings =>
+          prevFollowings.map(following => 
+            following.id === followingId 
+              ? { ...following, isFollowing: !isCurrentlyFollowing } 
+              : following
+          )
+        );
+
+
+        if (isCurrentlyFollowing) {
+          await deleteFollow(followingId); // Replace with your actual unfollow API function
+          console.log(`Unfollowed user with ID: ${followingId}`);
+        } else {
+          await postFollow(followingId); // Replace with your actual follow API function
+          console.log(`Followed user with ID: ${followingId}`);
+        }
+  
+      } catch (error) {
+        console.error("Error while updating follow status:", error);
+        setfollowings(prevFollowings =>
+          prevFollowings.map(following => 
+            following.id === followingId 
+              ? { ...following, isFollowing: isCurrentlyFollowing } 
+              : following
+          )
+        );
+      }
+    };
+
+
+  return (
+    <Container>
+      <BackNav />
+      {followings.map(following => (
+        <ListContainer key={following.id}> 
+          <Link to={`/profile/${following.username}`}>
+            <FollowerProfile 
+              image={following.image}
+              name={following.username}
+              intro={following.intro}
+            />
+          </Link>
+          <ButtonContainer>
+            <FollowButton
+              followAction={(followingId, isFollowing) => handleFollow(followingId, isFollowing)}
+              followingId={following.id}
+              initialFollowingStatus={following.isFollowing}
+            />
+          </ButtonContainer>
+        </ListContainer>
+      ))}
+    </Container>
+  );
+}
+
+const Container = styled.div`
+  width: 390px;
+  height: calc(100vh - 108px);
+  display: flex;
+  flex-direction: column;
+`;
+
+const ListContainer = styled.div` 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin: 16px;
+`;
+
+const ButtonContainer = styled.div`
+  width: 55px;
+  height: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+
+
+
+
+
+
+
+
