@@ -1,0 +1,399 @@
+import React, { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { userInfoAtom } from "../../atoms/UserAtom"; 
+import { authInstance as apiCall } from "../../api/axiosInstance";
+import BackNav from "../../components/Header/BackspaceHeader";
+import FollowingProfile from "../../components/common/ProfileList";
+import FollowButton from "../../components/common/Button/FollowButton";
+import styled from "styled-components";
+
+export default function FollowingPage() {
+  const userInfo = useRecoilValue(userInfoAtom);
+  const [following, setFollowing] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFollowing = async () => {
+      try {
+        const response = await apiCall.get(`/following/${userInfo.account}`);
+        console.log("API Response:", response.data);
+
+        apiCall().then(response => {
+          console.log("API Response:", response.data);
+            setFollowing(response.data);
+        }).catch(error => {
+          console.error("Failed to fetch following:", error);
+          setFollowing([]);  // Fallback to an empty array
+      }, []); // Adjust based on API response structure
+
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching following list:", error);
+        setLoading(false);
+      }
+    };
+    fetchFollowing();
+  }, [userInfo.account]);
+
+  if (loading) return <div>Loading...</div>;
+
+
+  return (
+    <Container>
+      <BackNav />
+      {Array.isArray(following) && following.map(user => (
+        <ListContainer key={user.id}>
+          <FollowingProfile 
+            image={user.image}
+            name={user.username}
+            intro={user.intro}
+          />
+          <FollowButton followerId={user.id} initialFollowingStatus={true} />
+        </ListContainer>
+      ))}
+    </Container>
+  );
+}
+
+const Container = styled.div`
+  width: 390px;
+  height: calc(100vh - 108px);
+  display: flex;
+  flex-direction: column;
+`;
+
+const ListContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin: 16px;
+`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // import React, { useState, useEffect } from "react";
+// // import { useRecoilValue } from "recoil";
+// // import { userInfoAtom } from "../../atoms/UserAtom"; 
+// // import { authInstance as apiCall } from "../../api/axiosInstance";
+// // import { Link } from "react-router-dom";
+
+// // import BackNav from "../../components/Header/BackspaceHeader";
+// // import FollowingProfile from "../../components/common/ProfileList";
+// // import FollowButton from "../../components/common/Button/FollowButton";
+// // import styled from "styled-components";
+
+// // export default function FollowingPage() {
+// //   const userInfo = useRecoilValue(userInfoAtom);
+// //   const [following, setFollowing] = useState([]);
+// //   const [loading, setLoading] = useState(true);
+
+// //   useEffect(() => {
+// //     const fetchFollowing = async () => {
+// //       try {
+// //         // Make the API call
+// //         const response = await apiCall.get(`/following/${userInfo.account}`);
+// //         console.log("API Response:", response.data);
+
+// //         // Update the state with the fetched data
+// //         setFollowing(response.data); // Adjust based on API response structure if needed
+
+// //         setLoading(false);
+// //       } catch (error) {
+// //         console.error("Error fetching following list:", error);
+// //         setLoading(false);
+// //         setFollowing([]);  // Fallback to an empty array in case of error
+// //       }
+// //     };
+
+// //     // Invoke the fetch function
+// //     fetchFollowing();
+// //   }, [userInfo.account]);
+
+// //   if (loading) return <div>Loading...</div>;
+
+// //   // 팔로우 및 취소 동작
+// //   const handleFollow = (followerId, isCurrentlyFollowing) => {
+// //     // This is where you'd typically make an API call to follow or unfollow
+// //     // For now, we'll just log the action
+// //     if (isCurrentlyFollowing) {
+// //       console.log(`Unfollowing user with ID: ${followerId}`);
+// //       // Call your API to unfollow here
+// //     } else {
+// //       console.log(`Following user with ID: ${followerId}`);
+// //       // Call your API to follow here
+// //     }
+// //   };
+
+// // //   return (
+// // //     <Container>
+// // //       <BackNav />
+// // //       {Array.isArray(following) && following.map(user => (
+// // //         <ListContainer key={user.id}>
+// // //           <FollowingProfile 
+// // //             image={user.image}
+// // //             name={user.username}
+// // //             intro={user.intro}
+// // //           />
+// // //           <FollowButton followerId={user.id} initialFollowingStatus={true} />
+// // //         </ListContainer>
+// // //       ))}
+// // //     </Container>
+// // //   );
+// // // }
+// // return (
+// //   <Container>
+// //     <BackNav />
+// //     {following.map(following => (
+// //       <ListContainer key={following.id}> 
+// //         <Link to={`/profile/${following.username}`}>
+// //           <followingProfile 
+// //             image={following.image}
+// //             name={following.username}
+// //             intro={following.intro}
+// //           />
+// //         </Link>
+// //         <ButtonContainer>
+// //           <FollowButton
+// //             followAction={(followerId, isFollowing) => handleFollow(followerId, isFollowing)}
+// //             followingId={following.id}
+// //             initialFollowingStatus={false}
+// //           />
+// //         </ButtonContainer>
+// //       </ListContainer>
+// //     ))}
+// //   </Container>
+// // );
+// // }
+
+// // const Container = styled.div`
+// //   width: 390px;
+// //   height: calc(100vh - 108px);
+// //   display: flex;
+// //   flex-direction: column;
+// // `;
+
+// // const ListContainer = styled.div`
+// //   display: flex;
+// //   justify-content: space-between;
+// //   align-items: center;
+// //   height: 50px;
+// //   margin: 16px;
+// // `;
+
+// // const ButtonContainer = styled.div`
+// //   width: 55px;
+// //   height: 27px;
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+// // `;
+
+
+
+// // import React, { useState, useEffect } from "react";
+// // import { useRecoilValue } from "recoil";
+// // import { userInfoAtom } from "../../atoms/UserAtom"; 
+// // import { authInstance as apiCall } from "../../api/axiosInstance";
+// // import { Link } from "react-router-dom";
+// // import BackNav from "../../components/Header/BackspaceHeader";
+// // import FollowingProfile from "../../components/common/ProfileList";
+// // import FollowButton from "../../components/common/Button/FollowButton";
+// // import styled from "styled-components";
+
+// // export default function FollowingPage() {
+// //   const userInfo = useRecoilValue(userInfoAtom);
+// //   const [following, setFollowing] = useState([]);
+// //   const [loading, setLoading] = useState(true);
+
+// //   useEffect(() => {
+// //     const fetchFollowing = async () => {
+// //       try {
+// //         const response = await apiCall.get(`/following/${userInfo.account}`);
+// //         console.log("API Response:", response.data);
+// //         setFollowing(response.data);
+// //         setLoading(false);
+// //       } catch (error) {
+// //         console.error("Error fetching following list:", error);
+// //         setLoading(false);
+// //         setFollowing([]);
+// //       }
+// //     };
+// //     fetchFollowing();
+// //   }, [userInfo.account]);
+
+// //   if (loading) return <div>Loading...</div>;
+
+// //   const handleFollow = (followerId, isCurrentlyFollowing) => {
+// //     if (isCurrentlyFollowing) {
+// //       console.log(`Unfollowing user with ID: ${followerId}`);
+// //       // Call your API to unfollow here
+// //     } else {
+// //       console.log(`Following user with ID: ${followerId}`);
+// //       // Call your API to follow here
+// //     }
+// //   };
+
+// //   return (
+// //     <Container>
+// //       <BackNav />
+// //       {following.map(user => (
+// //         <ListContainer key={user.id}>
+// //           <Link to={`/profile/${user.username}`}>
+// //             <FollowingProfile 
+// //               image={user.image}
+// //               name={user.username}
+// //               intro={user.intro}
+// //             />
+// //           </Link>
+// //           <ButtonContainer>
+// //             <FollowButton
+// //               followAction={(followerId, isFollowing) => handleFollow(followerId, isFollowing)}
+// //               followingId={user.id}
+// //               initialFollowingStatus={false}
+// //             />
+// //           </ButtonContainer>
+// //         </ListContainer>
+// //       ))}
+// //     </Container>
+// //   );
+// // }
+
+// // const Container = styled.div`
+// //   width: 390px;
+// //   height: calc(100vh - 108px);
+// //   display: flex;
+// //   flex-direction: column;
+// // `;
+
+// // const ListContainer = styled.div`
+// //   display: flex;
+// //   justify-content: space-between;
+// //   align-items: center;
+// //   height: 50px;
+// //   margin: 16px;
+// // `;
+
+// // const ButtonContainer = styled.div`
+// //   width: 55px;
+// //   height: 27px;
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+// // `;
+
+
+// import React, { useState, useEffect } from "react";
+// import { useRecoilValue } from "recoil";
+// import { userInfoAtom } from "../../atoms/UserAtom"; 
+// import { authInstance as apiCall } from "../../api/axiosInstance";
+// import { Link } from "react-router-dom";
+// import BackNav from "../../components/Header/BackspaceHeader";
+// import FollowingProfile from "../../components/common/ProfileList";
+// import FollowButton from "../../components/common/Button/FollowButton";
+// import styled from "styled-components";
+
+// export default function FollowingPage() {
+//   const userInfo = useRecoilValue(userInfoAtom);
+//   const [following, setFollowing] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const fetchFollowing = async () => {
+//       try {
+//         const response = await apiCall.get(`/following/${userInfo.account}`);
+//         console.log("API Response:", response.data);
+//         setFollowing(response.data);
+//         setLoading(false);
+//       } catch (error) {
+//         console.error("Error fetching following list:", error);
+//         setLoading(false);
+//         setFollowing([]);
+//       }
+//     };
+//     fetchFollowing();  // Calling it within the useEffect
+//   }, [userInfo.account]);
+
+//   if (loading) return <div>Loading...</div>;
+
+//   const handleFollow = async (followerId, isCurrentlyFollowing) => {
+//     try {
+//       if (isCurrentlyFollowing) {
+//         console.log(`Unfollowing user with ID: ${followerId}`);
+//         await apiCall.post(`/unfollow/${followerId}`);
+//       } else {
+//         console.log(`Following user with ID: ${followerId}`);
+//         await apiCall.post(`/follow/${followerId}`);
+//       }
+//       // Refresh the following list
+//       fetchFollowing();
+//     } catch (error) {
+//       console.error("Error updating follow status:", error);
+//     }
+//   };
+
+//   return (
+//     <Container>
+//       <BackNav />
+//       {Array.isArray(following) && following.map(user => (
+//         <ListContainer key={user.id}>
+//           <Link to={`/profile/${user.username}`}>
+//             <FollowingProfile 
+//               image={user.image}
+//               name={user.username}
+//               intro={user.intro}
+//             />
+//           </Link>
+//           <ButtonContainer>
+//             <FollowButton
+//               followAction={(followerId, isFollowing) => handleFollow(followerId, isFollowing)}
+//               followingId={user.id}
+//               initialFollowingStatus={false} // This might need adjustment based on whether the user is currently followed or not
+//             />
+//           </ButtonContainer>
+//         </ListContainer>
+//       ))}
+//     </Container>
+//   );
+// }
+
+// const Container = styled.div`
+//   width: 390px;
+//   height: calc(100vh - 108px);
+//   display: flex;
+//   flex-direction: column;
+// `;
+
+// const ListContainer = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   height: 50px;
+//   margin: 16px;
+// `;
+
+// const ButtonContainer = styled.div`
+//   width: 55px;
+//   height: 27px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
+
