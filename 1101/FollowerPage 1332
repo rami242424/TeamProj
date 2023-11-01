@@ -1,0 +1,57 @@
+import React, { useState, useEffect }  from "react";
+import { getFollowerList } from "../../api/follow";  // adjust the path accordingly
+import BackNav from "../../components/Header/BackspaceHeader";
+import FollowerProfile from "../../components/common/ProfileList";
+import FollowButton from "../../components/common/Button/FollowButton";
+import styled from "styled-components";
+
+export default function FollowerPage() {
+  const [followers, setFollowers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getFollowerList('accountname')
+      .then(data => {
+        setFollowers(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching followers:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+
+
+  return (
+    <Container>
+      <BackNav />
+      {followers.map(follower => (
+        <ListContainer key={follower.id}> 
+          <FollowerProfile 
+            name={follower.name}
+            Profile={follower.profileImg}
+            intro={follower.intro}
+          />
+          <FollowButton />
+        </ListContainer>
+      ))}
+    </Container>
+  );
+}
+
+const Container = styled.div`
+  width: 390px;
+  height: calc(100vh - 108px);
+  display: flex;
+  flex-direction: column;
+`;
+
+const ListContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin: 16px;
+`;
