@@ -1,0 +1,27 @@
+import React, { useEffect } from 'react';
+import { Background, Section, Container } from './LoginModalStyle';
+import LoginForm from '../../../../pages/Login/LoginForm';
+
+export default function Modal(props) {
+  useEffect(() => {
+    // 모달이 활성화 되었을 때
+    document.body.style.overflowY = "auto";
+
+    return () => {
+      // 모달이 닫혔을 때
+      document.body.style.overflowY = "hidden";
+    };
+  }, []);
+
+
+  return (
+    <>
+        <Background />
+        <Section>
+            <Container>
+              <LoginForm />
+            </Container>
+        </Section>
+    </>
+  )
+}
