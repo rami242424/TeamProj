@@ -34,7 +34,8 @@
 | 강민주                       | 권영우                    | 임연정                      | 오가람                        |
 | ---------------------------- | ------------------------- | --------------------------- | ----------------------------- |
 |![Uploading 1.splash.gif…]()  |![2 login](https://github.com/rami242424/TeamProj/assets/138556019/9d57f8e0-597e-42cc-be93-c48a87d513de) |![Uploading 3.signup.gif…]() |![Uploading 5.search.gif…]() |
-|                   d        |![13  게시글작성2(알럿)](https://github.com/rami242424/TeamProj/assets/138556019/3de3862d-26fb-4450-8fde-38fa55890888)
+|  ![영우님](https://github.com/rami242424/TeamProj/assets/138556019/4d071c7b-d813-48ce-bcc6-5897969fb93d)
+                       |![13  게시글작성2(알럿)](https://github.com/rami242424/TeamProj/assets/138556019/3de3862d-26fb-4450-8fde-38fa55890888)
                   d           | (사진첨부하기)                |          f                     |
 |![Uploading 3.signup.gif…]() |  | https://github.com/limm1222 | https://github.com/rami242424 |
 | 팀장                         | 팀원                      | 팀원                        | 팀원                          |
