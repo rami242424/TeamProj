@@ -34,8 +34,9 @@
 | 강민주                       | 권영우                    | 임연정                      | 오가람                        |
 | ---------------------------- | ------------------------- | --------------------------- | ----------------------------- |
 |![Uploading 1.splash.gif…]()  |![Uploading 2.login.gif…]() |![Uploading 3.signup.gif…]() |![Uploading 5.search.gif…]() |
-|                   d        |                  d           | (사진첨부하기)                |          f                     |
-| https://github.com/Minju9187 | https://github.com/kwonup | https://github.com/limm1222 | https://github.com/rami242424 |
+|                   d        |![13  게시글작성2(알럿)](https://github.com/rami242424/TeamProj/assets/138556019/3de3862d-26fb-4450-8fde-38fa55890888)
+                  d           | (사진첨부하기)                |          f                     |
+|![Uploading 3.signup.gif…]() |  | https://github.com/limm1222 | https://github.com/rami242424 |
 | 팀장                         | 팀원                      | 팀원                        | 팀원                          |
 
 ## 3. 기술 및 개발 환경
