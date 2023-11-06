@@ -33,9 +33,8 @@
 
 | 강민주                       | 권영우                    | 임연정                      | 오가람                        |
 | ---------------------------- | ------------------------- | --------------------------- | ----------------------------- |
-|             ![1 splash](https://github.com/rami242424/TeamProj/assets/138556019/1f995b0e-3fb1-45bb-bed4-94fd27b0![Uploading 2.login.gif…]()
-e43e)
-                 |                           |                             | (사진첨부하기)                |
+|                  ![Uploading 2.login.gif…]()
+            |                           |                             | (사진첨부하기)                |
 | https://github.com/Minju9187 | https://github.com/kwonup | https://github.com/limm1222 | https://github.com/rami242424 |
 | 팀장                         | 팀원                      | 팀원                        | 팀원                          |
 
