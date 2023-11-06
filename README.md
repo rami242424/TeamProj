@@ -38,7 +38,7 @@
 
 ## 3. 기술 및 개발 환경
 
----
+---https://img.shields.io/badge/JAVASCRIPT-yellow
 
 ## 4. 폴더 구조
 
