@@ -33,7 +33,7 @@
 
 | 강민주                       | 권영우                    | 임연정                      | 오가람                        |
 | ---------------------------- | ------------------------- | --------------------------- | ----------------------------- |
-|![Uploading 1.splash.gif…]()  |![Uploading 2.login.gif…]() |![Uploading 3.signup.gif…]() |![Uploading 5.search.gif…]() |
+|![Uploading 1.splash.gif…]()  |![2 login](https://github.com/rami242424/TeamProj/assets/138556019/9d57f8e0-597e-42cc-be93-c48a87d513de) |![Uploading 3.signup.gif…]() |![Uploading 5.search.gif…]() |
 |                   d        |![13  게시글작성2(알럿)](https://github.com/rami242424/TeamProj/assets/138556019/3de3862d-26fb-4450-8fde-38fa55890888)
                   d           | (사진첨부하기)                |          f                     |
 |![Uploading 3.signup.gif…]() |  | https://github.com/limm1222 | https://github.com/rami242424 |
@@ -95,6 +95,17 @@ src
   - 운동한 날 표시
 
 ## 6. 기능 UI
+
+
+------------------------------------------------------------------------------------------------------------------------------
+로그인          |             어쩌라고|                  하하 |                           |                 |                 |
+------------------------------------------------------------------------------------------------------------------------------
+
+![Uploading 2.login.gif…]() | ![9  좋아요1](https://github.com/rami242424/TeamProj/assets/138556019/74480133-24f0-472d-997f-ad830ece2bf3) | ![10  댓글달기](https://github.com/rami242424/TeamProj/assets/138556019/9648c8f6-bb8b-4c54-835c-8ed24688b5e8)|![7  채팅룸](https://github.com/rami242424/TeamProj/assets/138556019/b59e7b7d-e7f0-417e-b8f5-877f2c6ccd1e) |
+
+
+
+
 
 ---
 
