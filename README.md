@@ -11,7 +11,19 @@
 
 ## 0. 목차
 
----
+---![10  댓글달기](https://github.com/rami242424/TeamProj/assets/138556019/d5631147-b75e-4bd7-93c8-20db94836ad8)
+![13  게시글3(근력운동ver speedup)](https://github.com/rami242424/TeamProj/assets/138556019/875f9b3c-2a86-4438-b330-b9729e87d561)
+![12  404페이지](https://github.com/rami242424/TeamProj/assets/138556019/b2c5d3e4-302b-474b-b94b-3104be9f948c)
+
+![13  게시글작성1](https://github.com/rami242424/TeamProj/assets/138556019/ed9a399a-8822-4a62-bf6f-2d505ba2c091)
+![1 splash](https://github.com/rami242424/TeamProj/assets/138556019/957f1fb9-5084-4547-9560-42c09dbe913a)![Uploading 14. 게시글 삭제.gif…]()
+![13  게시글작성2(알럿)](https://github.com/rami242424/TeamProj/assets/138556019/bebc6f6a-1b06-42a6-a9f4-0ccf8cb4ad66)
+![2 login](https://github.com/rami242424/TeamProj/assets/138556019/07b780b8-f0d8-4555-8038-8309598caf90)
+
+
+https://github.com/rami242424/TeamProj/assets/138556019/860169af-d76b-4ff3-a8b3-7886dca5a0aa
+
+
 
 ## 1. 프로젝트 소개
 
